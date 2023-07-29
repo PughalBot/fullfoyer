@@ -41,6 +41,10 @@ io.on('connection', (socket) => {
         return;
       }
       const parsedMessages = data.map(message => JSON.parse(message));
+
+      parsedMessages.forEach((msg) => {
+        console.log(`Sending message with timestamp: ${msg.timestamp}`);
+      });
       socket.emit('history', parsedMessages);
     });
   });
